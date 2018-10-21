@@ -1,21 +1,16 @@
 import EVMRevert from 'openzeppelin-solidity/test/helpers/EVMRevert';
 
 const BigNumber = web3.BigNumber;
-
 const should = require('chai')
   .use(require('chai-as-promised'))
   .use(require('chai-bignumber')(BigNumber))
   .should();
-
 const Ico = artifacts.require("./Ico")
 
 contract('IcoTest', function (accounts) {
   let owner = accounts[0];
   let investor = accounts[1];
 
-  // For presale 16500 ether to buy all phase
-  // For sale 25000 ether to buy all phase
-  // Total 41500 ether
   beforeEach(async function () {
     this.ico = await Ico.new({from: owner})
   });
