@@ -1,8 +1,9 @@
 pragma solidity 0.4.24;
 
-import "openzeppelin-solidity/contracts/token/ERC20/CappedToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-contract Token is CappedToken {
+contract Token is StandardToken, Ownable {
 
   uint256 private constant TOKEN_SUPPLY = 1 * 10**27;
 
@@ -13,7 +14,7 @@ contract Token is CappedToken {
   event TransferingWithMessage(string message);
 
   constructor() public  {
-    totalSupply_ = TOKEN_SUPPLY;
+    totalSupply = TOKEN_SUPPLY;
     balances[msg.sender] = TOKEN_SUPPLY;
   }
 
