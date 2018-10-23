@@ -1,9 +1,8 @@
 pragma solidity 0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC20/CappedToken.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/PausableToken.sol";
 
-contract Token is PausableToken {
+contract Token is CappedToken {
 
   uint256 private constant TOKEN_SUPPLY = 1 * 10**27;
 
@@ -23,7 +22,7 @@ contract Token is PausableToken {
     uint256 _value,
     string _msg
   )
-    public whenNotPaused returns (bool)
+    public returns (bool)
   {
     emit TransferingWithMessage(_msg);
     return super.transfer(_to, _value);
@@ -35,7 +34,7 @@ contract Token is PausableToken {
     uint256 _value,
     string _msg
   )
-    public whenNotPaused returns (bool)
+    public returns (bool)
   {
     emit TransferingWithMessage(_msg);
     return super.transferFrom(_from, _to, _value);
