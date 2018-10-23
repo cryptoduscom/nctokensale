@@ -1,8 +1,9 @@
 pragma solidity 0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-contract Ico is Pausable {
+contract Ico is Pausable, Ownable {
 
   bool public isFinalized = false;
   bool public isStarted = false;
@@ -53,6 +54,6 @@ contract Ico is Pausable {
 
     emit Invested(msg.sender, _beneficiary, _weiAmount);
 
-    owner.transfer(_weiAmount);
+    owner().transfer(_weiAmount);
   }
 }

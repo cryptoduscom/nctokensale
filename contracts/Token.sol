@@ -11,7 +11,7 @@ contract Token is StandardToken, Ownable {
   string public constant symbol = "NCRL";
   uint8 public constant decimals = 18;
 
-  event TransferingWithMessage(string message);
+  event TransferringWithMessage(string message);
 
   constructor() public  {
     totalSupply = TOKEN_SUPPLY;
@@ -25,7 +25,7 @@ contract Token is StandardToken, Ownable {
   )
     public returns (bool)
   {
-    emit TransferingWithMessage(_msg);
+    emit TransferringWithMessage(_msg);
     return super.transfer(_to, _value);
   }
 
@@ -37,7 +37,7 @@ contract Token is StandardToken, Ownable {
   )
     public returns (bool)
   {
-    emit TransferingWithMessage(_msg);
+    emit TransferringWithMessage(_msg);
     return super.transferFrom(_from, _to, _value);
   }
 
