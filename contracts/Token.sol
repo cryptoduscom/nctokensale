@@ -14,7 +14,7 @@ contract Token is StandardToken, Ownable {
   event TransferringWithMessage(string message);
 
   constructor() public  {
-    totalSupply = TOKEN_SUPPLY;
+    totalSupply_ = TOKEN_SUPPLY;
     balances[msg.sender] = TOKEN_SUPPLY;
   }
 

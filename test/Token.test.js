@@ -19,14 +19,14 @@ contract('TokenTest', function (accounts) {
   describe('should add message when trasferning tokens with message', function() {
     it('should add message when transfering tokens with transferWithMsg', async function() {
       let tx = await this.token.transferWithMsg(investor, 1e18, 'Test_with_msg!', {from: owner});
-      truffleAssert.eventEmitted(tx, 'TransferingWithMessage', (ev) => {
+      truffleAssert.eventEmitted(tx, 'TransferringWithMessage', (ev) => {
           return ev.message === 'Test_with_msg!';
       });
     });
     it('should add message when transfering tokens with transferFromWithMsg', async function() {
       await this.token.approve(owner, 1e18, {from: owner});
       let tx = await this.token.transferFromWithMsg(owner, investor, 1e18, 'Test_from_with_msg!');
-      truffleAssert.eventEmitted(tx, 'TransferingWithMessage', (ev) => {
+      truffleAssert.eventEmitted(tx, 'TransferringWithMessage', (ev) => {
           return ev.message === 'Test_from_with_msg!';
       });
     });
