@@ -2,7 +2,7 @@ pragma solidity 0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
-contract Ico is Pausable {
+contract TokenSale is Pausable {
 
   bool public isFinalized = false;
   bool public isStarted = false;
