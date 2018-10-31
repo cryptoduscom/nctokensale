@@ -9,9 +9,13 @@ contract Token is StandardToken, Ownable {
 
   string public constant name = "Nitecrawler";
   string public constant symbol = "NCRL";
-  uint8 public constant decimals = 18;
+  uint public constant decimals = 18;
 
-  event TransferringWithMessage(string message);
+  event TransferringWithMessage(
+    address indexed from,
+    address indexed to,
+    uint256 value,
+    string message);
 
   constructor() public  {
     totalSupply_ = TOKEN_SUPPLY;
@@ -25,8 +29,9 @@ contract Token is StandardToken, Ownable {
   )
     public returns (bool)
   {
-    emit TransferringWithMessage(_msg);
-    return super.transfer(_to, _value);
+    require(super.transfer(_to, _value));
+    emit TransferringWithMessage(msg.sender, _to, _value, _msg);
+    return true;
   }
 
   function transferFromWithMsg(
@@ -37,8 +42,9 @@ contract Token is StandardToken, Ownable {
   )
     public returns (bool)
   {
-    emit TransferringWithMessage(_msg);
-    return super.transferFrom(_from, _to, _value);
+    require(super.transferFrom(_from, _to, _value));
+    emit TransferringWithMessage(_from, _to, _value, _msg);
+    return true;
   }
 
 }
