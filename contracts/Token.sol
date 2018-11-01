@@ -9,7 +9,7 @@ contract Token is StandardToken, Ownable {
 
   string public constant name = "Nitecrawler";
   string public constant symbol = "NCRL";
-  uint public constant decimals = 18;
+  uint8 public constant decimals = 18;
 
   event TransferringWithMessage(
     address indexed from,
